@@ -1,0 +1,14 @@
+<h1 class="d-flex justify-content-center fw-bold bg-warning text-white">NEW GAME</h1>
+<ul class="d-flex justify-content-center btn btn-warning">
+  <% @letters.each do |letter| %>
+    <li class="btn btn-primary w-25 m-3 gap-3 text-decoration-none"><%= letter %></li>
+  <% end %>
+</ul>
+    <p class="d-flex justify-content-center bg-warning text-white">What is the longest word you can form ?</p>
+<form class="d-flex justify-content-center bg-warning text-white" action="/score" method="post" data-turbo="false">
+    <input type="hidden" name="letters" value="<%=@letters.join%>">
+    <input type="text" name="query" class="border dark">
+  <input type="submit" value="Play">
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>
+  <%= audio_tag "music.mp3", id: "music", controls:true%>
